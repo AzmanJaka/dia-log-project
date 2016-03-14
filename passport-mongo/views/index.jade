@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  nav.navbar-inverse
+  nav.navbar-inverse.container-fluid
     .container-fluid
       .navbar-header
          a(class='navbar-brand' href='#') Dia-Log
@@ -15,12 +15,18 @@ block content
       
       ul.nav.navbar-nav.navbar-right
         li
-          a(href='#') Log in 
+          a(href='/signup') Sign up 
             span.glyphicon.glyphicon-user
-  .container
+        li
+          a(href='#') Log in 
+            span.glyphicon.glyphicon-log-in
+  .container-fluid.jumbotron
+    h1 test
+    .container-fluid
+    
     .row
-      .col-sm-6.col-md-4.col-md-offset-4
-        h1.text-center.login-title Sign in to our Passport app
+      .col-sm-4
+      .col-sm-4
           .account-wall
             form(class='form-signin', action='/login', method='POST')
               input(type='text', name='username' class='form-control', placeholder='Email',required, autofocus)
@@ -31,3 +37,4 @@ block content
           #message
           if message
           h1.text-center.error-message #{message}
+      .col-sm-4

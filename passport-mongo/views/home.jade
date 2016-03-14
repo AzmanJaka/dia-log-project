@@ -2,20 +2,22 @@ extends layout
 
 
 block content
+	nav.navbar-default
+		.container-fluid
+			.navbar-header
+				a(class='navbar-brand' href='#') Dia-Log
+			ul.nav.navbar-nav
+				li.active
+					a(href='#') Home
+					
+			ul.nav.navbar-nav.navbar-right
+				li
+					a(href='#') #{user.username}
+				li
+					a(href='/signout', class='text-center new-account') Sign Out 
+						span.glyphicon.glyphicon-log-out
+	
 	div.container
-		.jumbotron
-			h1.text-center.login-title Test
-	div.container
-		div.row
-			div.col-sm-4
-			div.col-sm-4
-				#user
-					h1.text-center.login-title Welcome #{user.firstName}. Check your details below:
-						div.signup-wall
-							ul.user-details
-								li Username ---> #{user.username}
-								li Email    ---> #{user.email}
-								li First Name ---> #{user.firstName} 
-								li Last Name ---> #{user.lastName}
-						a(href='/signout', class='text-center new-account') Sign Out
-			div.col-sm-4
+		.row.container-fluid
+			.jumbotron
+				
