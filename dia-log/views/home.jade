@@ -1,0 +1,23 @@
+extends layout
+
+
+block content
+	nav.navbar-default
+		.container-fluid
+			.navbar-header
+				a(class='navbar-brand' href='#') Dia-Log
+			ul.nav.navbar-nav
+				li.active
+					a(href='#') Home
+					
+			ul.nav.navbar-nav.navbar-right
+				li
+					a(href='#') #{user.username}
+				li
+					a(href='/signout', class='text-center new-account') Sign Out 
+						span.glyphicon.glyphicon-log-out
+	
+	div.container
+		.row.container-fluid
+			.jumbotron
+				
