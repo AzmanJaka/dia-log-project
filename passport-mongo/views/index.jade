@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  nav.navbar-inverse.container-fluid
+  nav.navbar-inverse.row-fluid
     .container-fluid
       .navbar-header
          a(class='navbar-brand' href='#') Dia-Log
@@ -18,10 +18,19 @@ block content
           a(href='/signup') Sign up 
             span.glyphicon.glyphicon-user
         li
-          a(href='#') Log in 
+          a(href='#', title='Header', data-toggle='popover', data-placement='bottom',rel='popover' data-content='Content') Log in 
             span.glyphicon.glyphicon-log-in
+         // a(href='#', title='Header', data-toggle='popover', data-placement='top', data-content='Content') Top
+        li
   .container-fluid.jumbotron
-    h1 test
+    .panel
+      ul#myTab1.nav.nav-tabs.nav-justified
+        li.active
+          a(href='#') Test
+            data-toggle('tab')
+        li
+          a(href='#') Test2
+        
     .container-fluid
     
     .row
@@ -38,3 +47,6 @@ block content
           if message
           h1.text-center.error-message #{message}
       .col-sm-4
+    
+    .container-fluid
+      a#blob.btn.large.primary(href='#', rel='popover', style='margin-top: 300px') hover for popover
