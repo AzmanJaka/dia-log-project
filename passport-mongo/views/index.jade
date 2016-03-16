@@ -24,26 +24,29 @@ block content
         li
   .container-fluid
     p 
-    .jumbotron(class="padding-top:5px")
-      h1 Hello! You are not logged in!
-    
-    
     .row
-      .col-sm-4
-      .col-sm-4
       .col-sm-2
+        .jumbotron
+      .col-sm-8
+        .panel-group
+          .panel.panel-default
+            .panel-heading This page is in developement
+            .panel-body Excuse us! This page is currently in developement. If you are a registered user, please log in.
       .col-sm-2
-          .account-wall
-            form(class='form-signin', action='/login', method='POST')
-              input(type='text', name='username' class='form-control', placeholder='Email',required, autofocus)
-              input(type='password', name='password' class='form-control', placeholder='Password', required)
-              button(class='btn btn-lg btn-primary btn-block', type='submit') Sign in
-              span.clearfix
-            a(href='/signup', class='text-center new-account') Create an account
-          #message
-          if message
-          h1.text-center.error-message #{message}
-      
-    
-    .container-fluid
-      a#blob.btn.large.primary(href='#', rel='popover', style='margin-top: 300px') hover for popover
+        .panel-group
+          .panel.panel-default
+            .panel-heading Log in
+            .panel-body 
+              .account-wall
+                form(class='form-signin', action='/login', method='POST')
+                  input(type='text', name='username' class='form-control', placeholder='Email',required, autofocus)
+                  input(type='password', name='password' class='form-control', placeholder='Password', required)
+                  button(class='btn btn-lg btn-primary btn-block', type='submit') Sign in
+                  span.clearfix
+              if message
+              h1.text-center.error-message #{message}
+            
+script.
+  $(document).ready(function(){
+     $('[data-toggle="popover"]').popover();   
+  });
