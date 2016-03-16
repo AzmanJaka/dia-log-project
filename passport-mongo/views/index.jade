@@ -22,20 +22,17 @@ block content
             span.glyphicon.glyphicon-log-in
          // a(href='#', title='Header', data-toggle='popover', data-placement='top', data-content='Content') Top
         li
-  .container-fluid.jumbotron
-    .panel
-      ul#myTab1.nav.nav-tabs.nav-justified
-        li.active
-          a(href='#') Test
-            data-toggle('tab')
-        li
-          a(href='#') Test2
-        
-    .container-fluid
+  .container-fluid
+    p 
+    .jumbotron(class="padding-top:5px")
+      h1 Hello! You are not logged in!
+    
     
     .row
       .col-sm-4
       .col-sm-4
+      .col-sm-2
+      .col-sm-2
           .account-wall
             form(class='form-signin', action='/login', method='POST')
               input(type='text', name='username' class='form-control', placeholder='Email',required, autofocus)
@@ -46,7 +43,7 @@ block content
           #message
           if message
           h1.text-center.error-message #{message}
-      .col-sm-4
+      
     
     .container-fluid
       a#blob.btn.large.primary(href='#', rel='popover', style='margin-top: 300px') hover for popover
