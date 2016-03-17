@@ -12,7 +12,7 @@ block content
 					
 			ul.nav.navbar-nav.navbar-right
 				li
-					a(href='#') #{user.username}
+					a(href='#') #{user.username} #{user.ehrId}
 				li
 					a(href='/signout', class='text-center new-account') Sign Out 
 						span.glyphicon.glyphicon-log-out
@@ -26,12 +26,15 @@ block content
 						.panel-heading Your profile:
 						.panel-body 
 							.col-sm-4
+								.container#temperature
 							.col-sm-8
 								.patient-info
 									h4#patient-name
 									p
 										span.patient-age
-									//p Welcome, #{user.username}! This is your dashboard. Here you can see all of your data, statistics and you can also enter new stuff here. If you have not, please add some more detail to your account info!
+									p Welcome, 
+										b #{user.username}! 
+										p This is your dashboard. Here you can see all of your data, statistics and you can also enter new stuff here. If you have not, please add some more detail to your account info!
 					
 			.col-sm-2
 				.panel-group
@@ -50,3 +53,20 @@ block content
 						.panel-heading Welcome aboard!
 						.panel-body You have succesfuly logged on to our service!
 			.col-sm-1
+	
+	div.container-fluid
+		.row
+			.col-sm-1
+			.col-sm-10
+				.panel-group
+					.panel.panel-default
+						.panel-heading Simple temperature input form:
+						.panel-body 
+							p Here you can test the simple functionality of adding body temperature
+							form.form-inline(role='formWriteVitalData')
+								.form-group
+									label(for='body_temperature') Body temperature:
+									input#body_temp.form-control(type='text')
+								button.btn.btn-default(type='submit' formaction=writePatientVitalData) Add
+			.col-sm-1
+	p Ehr je #{user.ehrId}

@@ -1,3 +1,6 @@
+
+
+
 $(document).ready(function () {
 
     $(".patient-records").sortable({
@@ -39,6 +42,35 @@ $(document).ready(function () {
     var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var sessionId;
 
+function getSessionId() {
+
+    var response = $.ajax({
+        type: "POST",
+        url: baseUrl + "/session?username=" + encodeURIComponent(username) +
+                "&password=" + encodeURIComponent(password),
+        async: false
+    });
+    return response.responseJSON.sessionId;
+}
+
+function writePatientVitalData() {
+
+	sessionId = getSessionId();
+  	console.log(sessionId);
+    console.log(#{user.ehrId});
+	var ehrId = #{user.ehrId};
+  //	var dataTime = document.forms["formWriteVitalData"].dataTime.value;
+
+	var dataBodyTemperature = document.forms["formWriteVitalData"].body_temperature.value;
+
+	$.ajaxSetup({
+	    headers: {
+	        "Ehr-Session": sessionId
+	    }
+	});
+}
+	
+	
     function login() {
         return $.ajax({
             type: "POST",

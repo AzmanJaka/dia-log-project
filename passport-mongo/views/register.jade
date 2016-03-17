@@ -26,7 +26,9 @@ block content
 									p
 									input(type='text', name='lastName', class='form-control', placeholder='Last Name',required)
 									p
-									//input(type='text', name='ehr-id', class='form-control', placeholder='Enter ehr id',required)
+									#{user.ehrId}
+									input#testni(type='text', name='ehrId', class='form-control', placeholder='Enter ehr id',required)
+									p
 									button(class='btn btn-lg btn-primary btn-block', type='submit') Register
 									span.clearfix
 							#message
@@ -38,3 +40,8 @@ block content
 						.panel-heading Why should you?
 						.panel-body In order to use the website you need to register. Yes. There will be bugs. Yes i might delete the user database at some point. Not intentionally. But because i am a bad tsar. But join and help me develop the functionality!
 			.col-sm-2
+	.row
+		.col-sm-6
+			p#testni(name="ehrId")
+		.col-sm-6
+			button(onclick='createUser()') Click me
