@@ -1,20 +1,40 @@
 extends layout
 
 block content
+	nav.navbar-inverse.row-fluid
+		.container-fluid
+			.navbar-header
+				a(class='navbar-brand' href='/') Dia-Log
 	div.container
+		p 
 		div.row
-			div.col-sm-6.col-md-4.col-md-offset-4
-				h1.text-center.login-title Registration Details
-					div.signup-wall
-						form(class='form-signin', action='/signup', method='POST')
-							input(type='text', name='username', class='form-control', placeholder='Username',required, autofocus)
-							input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
-							input(type='email', name='email', class='form-control', placeholder='Email',required)
-							input(type='text', name='firstName', class='form-control', placeholder='First Name',required)
-							input(type='text', name='lastName', class='form-control', placeholder='Last Name',required)
-							//input(type='text', name='ehr-id', class='form-control', placeholder='Enter ehr id',required)
-							button(class='btn btn-lg btn-primary btn-block', type='submit') Register
-							span.clearfix
-					#message
-						if message
-							h1.text-center.error-message #{message}
+			.col-sm-2
+			.col-sm-5
+				.panel-group
+					.panel.panel-info
+						.panel-heading Please register to use the site!
+						.panel-body
+							div.signup-wall
+								form(class='form-signin', action='/signup', method='POST')
+									input(type='text', name='username', class='form-control', placeholder='Username',required, autofocus)
+									p
+									input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
+									p
+									input(type='email', name='email', class='form-control', placeholder='Email',required)
+									p
+									input(type='text', name='firstName', class='form-control', placeholder='First Name',required)
+									p
+									input(type='text', name='lastName', class='form-control', placeholder='Last Name',required)
+									p
+									//input(type='text', name='ehr-id', class='form-control', placeholder='Enter ehr id',required)
+									button(class='btn btn-lg btn-primary btn-block', type='submit') Register
+									span.clearfix
+							#message
+								if message
+									h1.text-center.error-message #{message}
+			.col-sm-3
+				.panel-group
+					.panel.panel-default
+						.panel-heading Why should you?
+						.panel-body In order to use the website you need to register. Yes. There will be bugs. Yes i might delete the user database at some point. Not intentionally. But because i am a bad tsar. But join and help me develop the functionality!
+			.col-sm-2

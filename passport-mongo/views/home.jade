@@ -16,12 +16,37 @@ block content
 				li
 					a(href='/signout', class='text-center new-account') Sign Out 
 						span.glyphicon.glyphicon-log-out
+	p 
+	.container-fluid
+		.row
+			.col-sm-1
+			.col-sm-8
+				.panel-group
+					.panel.panel-info
+						.panel-heading Your profile:
+						.panel-body 
+							.col-sm-4
+							.col-sm-8
+								.patient-info
+									h4#patient-name
+									p
+										span.patient-age
+									//p Welcome, #{user.username}! This is your dashboard. Here you can see all of your data, statistics and you can also enter new stuff here. If you have not, please add some more detail to your account info!
+					
+			.col-sm-2
+				.panel-group
+					.panel.panel-default
+						.panel-heading Useful tip:
+						.panel-body Oops. The database of useful tips is empty right now. Check back soon! 
+			.col-sm-1
 	
 	p 
-	div.container.container-fluid
+	div.container-fluid
 		.row
-			.panel-group
-				.panel.panel-success
-					.panel-heading Welcome abroad!
-					.panel-body You have succesfuly logged on to our service!
-		
+			.col-sm-1
+			.col-sm-10
+				.panel-group
+					.panel.panel-success
+						.panel-heading Welcome aboard!
+						.panel-body You have succesfuly logged on to our service!
+			.col-sm-1
