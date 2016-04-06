@@ -15,7 +15,7 @@ block content
 						.panel-heading Please register to use the site!
 						.panel-body
 							div.signup-wall
-								form(class='form-signin', action='/signup', method='POST')
+								form(name='myForm',class='form-signin', action='/signup', method='POST')
 									input(type='text', name='username', class='form-control', placeholder='Username',required, autofocus)
 									p
 									input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
@@ -24,9 +24,17 @@ block content
 									p
 									input(type='text', name='firstName', class='form-control', placeholder='First Name',required)
 									p
-									input(type='text', name='lastName', class='form-control', placeholder='Last Name',required)
+										.fieldset(disabled)
+											input(type='text', name='lastName', class='form-control', placeholder='Last Name',required)
 									p
-									input#testni(type='text', name='ehrId', class='form-control', placeholder='Enter ehr id',required)
+									select#sel1(name="gender" class="form-control")
+										option Male
+										option Female
+									p
+									script.
+										createUser();
+									input(id="ehrId" name="ehrId" type="hidden" class="form-control")
+									p#ehrPrikaz
 									p
 									button(class='btn btn-lg btn-primary btn-block', type='submit') Register
 									span.clearfix
@@ -41,6 +49,7 @@ block content
 			.col-sm-2
 	.row
 		.col-sm-6
-			p#testni(name="ehrId")
 		.col-sm-6
 			button(onclick='createUser()') Click me
+			
+

@@ -1,9 +1,12 @@
+
+
 var LocalStrategy   = require('passport-local').Strategy;
 var User = require('../models/user');
 var bCrypt = require('bcrypt-nodejs');
+//var new_ehr_user = require('../public/javascript/new_ehr_user');
 
 module.exports = function(passport){
-
+    
 	passport.use('signup', new LocalStrategy({
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
@@ -25,15 +28,14 @@ module.exports = function(passport){
                         // if there is no user with that email
                         // create the user
                         var newUser = new User();
-
                         // set the user's local credentials
                         newUser.username = username;
                         newUser.password = createHash(password);
                         newUser.email = req.param('email');
                         newUser.firstName = req.param('firstName');
                         newUser.lastName = req.param('lastName');
-                        newUser.ehrId = req.param('ehrId');
-                        
+                        newUser.ehrId = req.param('ehrId');//new_ehr_user.createUser();//req.param('ehrId');
+
 
                         // save the user
                         newUser.save(function(err) {
@@ -57,5 +59,13 @@ module.exports = function(passport){
     var createHash = function(password){
         return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
     }
+    
+    
 
+
+
+
+    
+    
+    
 }

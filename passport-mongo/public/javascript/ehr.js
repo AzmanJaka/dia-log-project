@@ -1,4 +1,4 @@
-
+/*
 
 
 $(document).ready(function () {
@@ -57,8 +57,9 @@ function writePatientVitalData() {
 
 	sessionId = getSessionId();
   	console.log(sessionId);
-    console.log(#{user.ehrId});
-	var ehrId = #{user.ehrId};
+    
+	var ehrId = '742db5d9-76e1-407a-88a8-4da6b7966777';
+	console.log(ehrId);
   //	var dataTime = document.forms["formWriteVitalData"].dataTime.value;
 
 	var dataBodyTemperature = document.forms["formWriteVitalData"].body_temperature.value;
@@ -689,3 +690,4 @@ function writePatientVitalData() {
     });
 });
 
+*/

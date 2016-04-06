@@ -48,6 +48,10 @@ module.exports = function(passport){
 		req.logout();
 		res.redirect('/');
 	});
+	
+	router.get('/settings', isAuthenticated, function(req, res){
+		res.render('settings', { user: req.user });	
+	});
 
 	return router;
 }

@@ -12,11 +12,26 @@ block content
 					
 			ul.nav.navbar-nav.navbar-right
 				li
-					a(href='#') #{user.username} #{user.ehrId}
+					a(href='settings') Logged in as #{user.firstName}
 				li
 					a(href='/signout', class='text-center new-account') Sign Out 
 						span.glyphicon.glyphicon-log-out
+	
 	p 
+	#myfirstchart(style='height: 250px;')
+	div.container-fluid
+		.row
+			.col-sm-1
+			.col-sm-10
+				#login-note.panel-group
+					.panel.panel-success
+						.panel-heading Welcome aboard!
+							button.close(type='button', data-target='#login-note', data-dismiss='alert')
+								span(aria-hidden='true') ×
+								span.sr-only Close
+						.panel-body You have succesfuly logged on to our service!
+			.col-sm-1
+	
 	.container-fluid
 		.row
 			.col-sm-1
@@ -29,11 +44,8 @@ block content
 								.container#temperature
 							.col-sm-8
 								.patient-info
-									h4#patient-name
-									p
-										span.patient-age
 									p Welcome, 
-										b #{user.username}! 
+										b #{user.firstName} #{user.lastName}! 
 										p This is your dashboard. Here you can see all of your data, statistics and you can also enter new stuff here. If you have not, please add some more detail to your account info!
 					
 			.col-sm-2
@@ -44,29 +56,41 @@ block content
 			.col-sm-1
 	
 	p 
-	div.container-fluid
-		.row
-			.col-sm-1
-			.col-sm-10
-				.panel-group
-					.panel.panel-success
-						.panel-heading Welcome aboard!
-						.panel-body You have succesfuly logged on to our service!
-			.col-sm-1
-	
-	div.container-fluid
+
+		div.container-fluid
 		.row
 			.col-sm-1
 			.col-sm-10
 				.panel-group
 					.panel.panel-default
-						.panel-heading Simple temperature input form:
+						.panel-heading Simple blood glucose input form:
 						.panel-body 
-							p Here you can test the simple functionality of adding body temperature
-							form.form-inline(role='formWriteVitalData')
-								.form-group
-									label(for='body_temperature') Body temperature:
-									input#body_temp.form-control(type='text')
-								button.btn.btn-default(type='submit' formaction=writePatientVitalData) Add
+							p Enter blood glucose level in ml/dl: 
+								b 18 × 1 mmol/dl = 18 mg/dl
+							input#blood_glucose(type='text' class="form-control")
+							br
+							select#units.form-control
+								option mg/dl
+								option mmol/l 
+							br
+							button#lala(class="btn btn-success") Test
+									
+										
 			.col-sm-1
-	p Ehr je #{user.ehrId}
+		div#header
+		p#result
+	script(type='text/javascript').
+		var ehr_id_from_base = "#{user.ehrId}";
+		//getPatientVitalData(ehr_id_from_base);
+		
+		$("#lala").click(function(){
+			var glucose = $("#blood_glucose").val();
+			var units = $('#units').val();
+			if(units == "mmol/l"){
+				glucose = glucose * 18;
+			}
+			units = "mg/dl";
+			writePatientBloodGlucoseData(ehr_id_from_base, glucose, units);
+		});
+		
+		

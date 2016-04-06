@@ -1,0 +1,73 @@
+extends layout
+
+block content
+	nav.navbar-inverse.row-fluid
+		.container-fluid
+			.navbar-header
+				a(class='navbar-brand' href='/') Dia-Log
+			.ul.nav.navbar-nav
+				li
+					a(href='/home') Home
+				li.active
+					a(href='#') Settings
+					
+			ul.nav.navbar-nav.navbar-right
+				li
+					a(href='settings') #{user.username} #{user.ehrId}
+				li
+					a(href='/signout', class='text-center new-account') Sign Out 
+						span.glyphicon.glyphicon-log-out
+						
+	.container-fluid
+		p
+		.row
+			.col-sm-1
+			.col-sm-8
+				.panel-group
+					.panel.panel-success
+						.panel-heading Settings
+						.panel-body Here you can edit your settings.
+				.panel-group
+					.panel.panel-info
+						.panel-heading Change your information
+						.panel-body 
+							.col-sm-12
+								.form-group
+									.row.container-fluid
+										.col-sm-1
+											label(for='firstName') Name:
+										.col-sm-11
+									.row.container-fluid
+										.col-sm-12
+											input#usr.form-control(type='text')
+
+									.row.container-fluid
+									p
+										.col-sm-12
+											label(for='lastName') Last name:
+										.col-sm-1
+									.row.container-fluid
+										.col-sm-12
+											input#usr.form-control(type='text')
+									.row
+										p
+										br
+										.col-sm-12.text-center
+											button.btn.btn-info(type='button') Commit changes
+										
+
+								
+			.col-sm-2
+				.panel-group
+					.panel.panel-default
+						.panel-heading Your account
+						.panel-body
+							img.img-responsive(src='images/default_portrait_image.png', alt='Your image', width='300', height='300')
+							p
+							p.text-center 
+								b #{user.username}
+							p
+								b #{user.firstName} #{user.lastName}
+							p.small EHR id: #{user.ehrId}
+							
+			.col-sm-1

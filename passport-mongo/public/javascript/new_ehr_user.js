@@ -1,33 +1,39 @@
+
 var baseUrl = 'https://rest.ehrscape.com/rest/v1';
 var queryUrl = baseUrl + '/query';
 
 
-//var ehrId = '0569e0df-c936-4f8f-9815-068c0c8489dc';
+
 var username = 'ja2207@student.uni-lj.si';
 var password = 'ja2207';
+var authorization = "Basic " + (new Buffer(username + ":" + password).toString('base64'));
+//var authorization = "Basic " + btoa(username + ":" + password);
 
-var authorization = "Basic " + btoa(username + ":" + password);
+var url = baseUrl + "/ehr";
+var ehrId = "";
 
-$("#testni").prop("readonly", true);
+function createUser(){
 
 $.ajaxSetup({
     headers: {
         "Authorization": authorization
     }
 });
-function createUser(){
 $.ajax({
     url: baseUrl + "/ehr",
     type: 'POST',
     success: function (data) {
-        var ehrId = data.ehrId;
-        document.getElementById("testni").value = ehrId;
-        //$("#testni").value(ehrId);
+        ehrId = data.ehrId;
+        //document.getElementById("ehrId").innerHTML = ehrId;
+        $("#ehrId").val(ehrId);
+        //document.getElementById("test").innerHTML = ehrId;
+
+        //("#testni").value(ehrId);
 
         // build party data
         var partyData = {
-            firstNames: "Mary",
-            lastNames: "Wilkinson",
+            firstNames: "Jaka",
+            lastNames: "Azman",
             dateOfBirth: "1982-7-18T19:30",
             partyAdditionalInfo: [
                 {
@@ -42,11 +48,19 @@ $.ajax({
             contentType: 'application/json',
             data: JSON.stringify(partyData),
             success: function (party) {
+                
                 //if (party.action == 'CREATE') {
                //     $("#testni").html("Created: " + party.meta.href);
              //   }
             }
         });
+        //return ehrId;
     }
 });
 }
+
+function returnEhrId(){
+    createUser();
+    return ehrId;
+}
+
